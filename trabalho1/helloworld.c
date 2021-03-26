@@ -12,7 +12,7 @@ AUTOSTART_PROCESSES(&helloworld);
 PROCESS_THREAD(helloworld, ev, data){
 	
 	static struct etimer timer;
-	
+	 
 	static uint8_t i = 0;
 
 	PROCESS_BEGIN(); 

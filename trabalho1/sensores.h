@@ -10,4 +10,4 @@ PROCESS_NAME(sensores);
  */
 float get_read_temperature(void);
 float get_read_humidity(void);
-float get_read_pressure(void);
+float get_read_pressure(void); 
