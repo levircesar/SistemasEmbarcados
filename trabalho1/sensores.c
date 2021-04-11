@@ -51,7 +51,6 @@ static void read_pressure(void)
 }
 
 
-
 float get_read_temperature(void){
     return temperature;
 }
