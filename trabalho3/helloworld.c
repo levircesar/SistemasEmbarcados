@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "blinkled.h"
+#include "sensores.h"
 
 PROCESS(helloworld, "My first process in Contiki-ng");
 
@@ -19,6 +20,7 @@ PROCESS_THREAD(helloworld, ev, data){
 	PROCESS_BEGIN();
 	
 	process_start(&blinkled, NULL);
+	process_start(&sensores, NULL);
 
 	etimer_set(&timer, CLOCK_SECOND * 5);
 
@@ -27,7 +29,7 @@ PROCESS_THREAD(helloworld, ev, data){
 		i++ ;
 		
 		printf("FROM HELLOWORLD leds_state = %d\r\n", get_leds_state());
-		
+		printf("valor da umidade = %.2f\r\n", get_read_humidity());
 		
 		process_post(&blinkled, EVENT_RCV_POWER_OFF, &valid_data);
 

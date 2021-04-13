@@ -66,7 +66,7 @@ PROCESS_THREAD(primeiro, ev, data)
 	int i = 0;
 	
     PROCESS_BEGIN(); 
-	send_buffer_to_principal = process_alloc_event();
+	sacend_buffer_to_principal = process_alloc_event();
     while (1)
     {
         

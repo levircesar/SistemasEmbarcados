@@ -75,8 +75,11 @@ PROCESS_THREAD(blinkled, ev, data)
 	/*
 	* Set a callback function to be started each N=10 seconds
 	* */
-	printf("Calling my callback's fucntion.\r\n");
-    ctimer_set(&ct, CLOCK_SECOND * 5, ctimer_event_callback, &ct);
+	for(int i = 0; i<5;i++){
+		printf("Calling my callback's fucntion.\r\n");
+   		 ctimer_set(&ct, CLOCK_SECOND * 1, ctimer_event_callback, &ct);
+	}
+	
 	//etimer_set(&timer, CLOCK_SECOND * 6);
 	
     while (1){
