@@ -29,9 +29,8 @@ PROCESS_THREAD(principal, ev, data){
 
 	while(1){
 		
-		printf("escreva uma palavra \n");
+		printf("digite um numero: \n");
 		if(scanf("%s",buffer)){
-			printf("buffer recebido: ");
 			fputs(buffer,stdout);
 			printf("\n");
 		}
@@ -40,17 +39,17 @@ PROCESS_THREAD(principal, ev, data){
 			static_buffer[i] = buffer[i];
 		}
 
-		if( static_buffer[0] == 'a'){
+		if( static_buffer[0] == '2'){
 			process_post(&primeiro , send_buffer_to_primeiro,&static_buffer);
-			printf("buffer enviado para o primeiro \n");
+			printf("Encaminhado para a primeira funcao \n");
 		}else{
 			process_post(&segundo , send_buffer_to_segundo,&static_buffer);
-			printf("buffer enviado para o segundo \n");
+			printf("Encaminhado para a segunda funcao  \n");
 		}
 	
 	
 		PROCESS_WAIT_EVENT_UNTIL(ev == send_buffer_to_principal);
-		printf("um processo secundario enviou um buffer de volta \n");
+		printf("buffer retornado \n");
 		char *ponteiro = data;
 		fputs(ponteiro,stdout);
 		printf("\n");
@@ -66,7 +65,7 @@ PROCESS_THREAD(primeiro, ev, data)
 	int i = 0;
 	
     PROCESS_BEGIN(); 
-	sacend_buffer_to_principal = process_alloc_event();
+	send_buffer_to_principal = process_alloc_event();
     while (1)
     {
         
